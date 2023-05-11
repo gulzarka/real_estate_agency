@@ -17,6 +17,12 @@ class FlatAdmin(admin.ModelAdmin):
         'new_building',
         'construction_year',
         'town')
+    list_filter = (
+        'new_building',
+        'rooms_number',
+        'has_balcony')
+
+      
 
      
 
