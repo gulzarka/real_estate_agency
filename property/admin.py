@@ -21,6 +21,7 @@ class FlatAdmin(admin.ModelAdmin):
         'new_building',
         'rooms_number',
         'has_balcony')
+    raw_id_fields = ('liked_by',)
 
 
 class ComplaintAdmin(admin.ModelAdmin):
