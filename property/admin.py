@@ -4,16 +4,14 @@ from .models import Flat, Complaint, Owner
 
 
 class FlatAdmin(admin.ModelAdmin):
-    search_fields = ('town', 'address')
+    search_fields = ('town', 'address', 'id')
     readonly_fields = ('created_at',)
     list_display = (
         'address',
         'price',
         'new_building',
         'construction_year',
-        'town',
-        'owners_phonenumber',
-        'owner_pure_phone')
+        'town')
     list_editable = (
         'price',
         'new_building',
