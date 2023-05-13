@@ -92,7 +92,10 @@ class Owner(models.Model):
         verbose_name='ФИО владельца',
         max_length=200,
         db_index=True)
-    owner_phonenumber = models.CharField('Номер владельца', max_length=20)
+    owner_phonenumber = models.CharField(
+        'Номер владельца',
+        max_length=20,
+        db_index=True)
     owner_pure_phone = PhoneNumberField(
         region='RU',
         verbose_name='Нормализованный номер владельца',
@@ -105,5 +108,7 @@ class Owner(models.Model):
         verbose_name='квартиры в собственности',
         db_index=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
+
+   
