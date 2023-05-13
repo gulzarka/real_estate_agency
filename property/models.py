@@ -90,7 +90,8 @@ class Complaint(models.Model):
 class Owner(models.Model):
     name = models.CharField(
         verbose_name='ФИО владельца',
-        max_length=200)
+        max_length=200,
+        db_index=True)
     owner_phonenumber = models.CharField('Номер владельца', max_length=20)
     owner_pure_phone = PhoneNumberField(
         region='RU',
@@ -103,3 +104,6 @@ class Owner(models.Model):
         related_name='owned_flat',
         verbose_name='квартиры в собственности',
         db_index=True)
+
+    def __str__(self):
+        return self.name
