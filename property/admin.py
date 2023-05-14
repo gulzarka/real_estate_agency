@@ -3,8 +3,13 @@ from django.contrib import admin
 from .models import Flat, Complaint, Owner
 
 
+class PropertyInline(admin.TabularInline):
+    model = Flat.owned_flat.through
+    raw_id_fields = ['owner']
+
+
 class FlatAdmin(admin.ModelAdmin):
-    search_fields = ('town', 'address', 'id')
+    search_fields = ('town', 'address')
     readonly_fields = ('created_at',)
     list_display = (
         'address',
@@ -22,6 +27,8 @@ class FlatAdmin(admin.ModelAdmin):
         'rooms_number',
         'has_balcony')
     raw_id_fields = ('liked_by',)
+    inlines = [PropertyInline]
+    # exclude = ['flat']
 
 
 class ComplaintAdmin(admin.ModelAdmin):
@@ -33,10 +40,6 @@ class ComplaintAdmin(admin.ModelAdmin):
 
 
 class OwnerAdmin(admin.ModelAdmin):
-    list_display = (
-        'name',
-        'owner_phonenumber',
-        'owner_pure_phone')
     raw_id_fields = ('owned_flat',)
 
 
