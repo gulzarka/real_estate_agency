@@ -29,7 +29,7 @@ class FlatAdmin(admin.ModelAdmin):
         'has_balcony')
     raw_id_fields = ('liked_by',)
     inlines = [PropertyInline]
-    # exclude = ['flat']
+    exclude = ['flat']
 
 
 @admin.register(Complaint)
@@ -44,6 +44,4 @@ class ComplaintAdmin(admin.ModelAdmin):
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ('flat',)
-
-
 
