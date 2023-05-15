@@ -81,6 +81,9 @@ class Complaint(models.Model):
         null=True,
         db_index=True)
 
+    def __str__(self) -> str:
+        return self.user
+
 
 class Owner(models.Model):
     name = models.CharField(
