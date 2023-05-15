@@ -82,7 +82,7 @@ class Complaint(models.Model):
         db_index=True)
 
     def __str__(self) -> str:
-        return self.name
+        return f'{self.user} {self.flat} {self.text}'
 
 
 class Owner(models.Model):
