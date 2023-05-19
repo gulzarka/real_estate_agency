@@ -5,6 +5,22 @@ from django.contrib.auth.models import User
 
 
 class Flat(models.Model):
+    owner = models.CharField(
+        verbose_name='ФИО владельца',
+        max_length=200,
+        db_index=True)
+    owners_phonenumber = models.CharField(
+        'Номер владельца',
+        max_length=20,
+        db_index=True,
+        blank=True,
+        null=True)
+    # owner_pure_phone = PhoneNumberField(
+    #     region='RU',
+    #     verbose_name='Нормализованный номер владельца',
+    #     blank=True,
+    #     null=True,
+    #     db_index=True)
     created_at = models.DateTimeField(
         'Когда создано объявление',
         default=timezone.now,
@@ -53,10 +69,10 @@ class Flat(models.Model):
         db_index=True,
         blank=True,
         null=True)
-    liked_by = models.ManyToManyField(
-        User,
-        related_name='likes_flat',
-        verbose_name='кто лайкнул')
+    # liked_by = models.ManyToManyField(
+    #     User,
+    #     related_name='likes_flat',
+    #     verbose_name='кто лайкнул')
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
@@ -85,30 +101,30 @@ class Complaint(models.Model):
         return f'{self.user} {self.flat} {self.text}'
 
 
-class Owner(models.Model):
-    name = models.CharField(
-        verbose_name='ФИО владельца',
-        max_length=200,
-        db_index=True)
-    phonenumber = models.CharField(
-        'Номер владельца',
-        max_length=20,
-        db_index=True,
-        blank=True,
-        null=True)
-    pure_phone = PhoneNumberField(
-        region='RU',
-        verbose_name='Нормализованный номер владельца',
-        blank=True,
-        null=True,
-        db_index=True)
-    flat = models.ManyToManyField(
-        Flat,
-        related_name='owners',
-        verbose_name='квартиры в собственности',
-        db_index=True)
+# class Owner(models.Model):
+#     name = models.CharField(
+#         verbose_name='ФИО владельца',
+#         max_length=200,
+#         db_index=True)
+#     phonenumber = models.CharField(
+#         'Номер владельца',
+#         max_length=20,
+#         db_index=True,
+#         blank=True,
+#         null=True)
+#     pure_phone = PhoneNumberField(
+#         region='RU',
+#         verbose_name='Нормализованный номер владельца',
+#         blank=True,
+#         null=True,
+#         db_index=True)
+#     flat = models.ManyToManyField(
+#         Flat,
+#         related_name='owners',
+#         verbose_name='квартиры в собственности',
+#         db_index=True)
 
-    def __str__(self) -> str:
-        return self.name
+#     def __str__(self) -> str:
+#         return self.name
 
    
