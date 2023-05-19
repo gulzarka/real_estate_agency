@@ -69,11 +69,11 @@ class Flat(models.Model):
         db_index=True,
         blank=True,
         null=True)
-    # liked_by = models.ManyToManyField(
-    #     User,
-    #     related_name='likes_flat',
-    #     verbose_name='кто лайкнул',
-    #     blank=True)
+    liked_by = models.ManyToManyField(
+        User,
+        related_name='likes_flat',
+        verbose_name='кто лайкнул',
+        blank=True)
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
