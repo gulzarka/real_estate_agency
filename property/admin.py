@@ -28,7 +28,7 @@ class FlatAdmin(admin.ModelAdmin):
         'new_building',
         'rooms_number',
         'has_balcony')
-    # raw_id_fields = ('liked_by',)
+    raw_id_fields = ('liked_by',)
     # inlines = [PropertyInline]
     # exclude = ['flat']
 
