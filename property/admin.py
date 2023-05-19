@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Flat, Complaint
-# , Owner
+from .models import Flat, Complaint, Owner
+
 
 
 # class PropertyInline(admin.TabularInline):
@@ -46,7 +46,6 @@ class ComplaintAdmin(admin.ModelAdmin):
     raw_id_fields = ('user', 'flat')
 
 
-# @admin.register(Owner)
-# class OwnerAdmin(admin.ModelAdmin):
-#     raw_id_fields = ('flat',)
-
+@admin.register(Owner)
+class OwnerAdmin(admin.ModelAdmin):
+    raw_id_fields = ('flat',)
