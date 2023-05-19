@@ -15,12 +15,12 @@ class Flat(models.Model):
         db_index=True,
         blank=True,
         null=True)
-    # owner_pure_phone = PhoneNumberField(
-    #     region='RU',
-    #     verbose_name='Нормализованный номер владельца',
-    #     blank=True,
-    #     null=True,
-    #     db_index=True)
+    owner_pure_phone = PhoneNumberField(
+        region='RU',
+        verbose_name='Нормализованный номер владельца',
+        blank=True,
+        null=True,
+        db_index=True)
     created_at = models.DateTimeField(
         'Когда создано объявление',
         default=timezone.now,
