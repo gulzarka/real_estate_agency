@@ -3,10 +3,9 @@ from django.contrib import admin
 from .models import Flat, Complaint, Owner
 
 
-
-# class PropertyInline(admin.TabularInline):
-#     model = Flat.owners.through
-#     raw_id_fields = ['owner']
+class PropertyInline(admin.TabularInline):
+    model = Flat.owners.through
+    raw_id_fields = ['owner', 'flat']
 
 
 @admin.register(Flat)
@@ -33,8 +32,8 @@ class FlatAdmin(admin.ModelAdmin):
         'rooms_number',
         'has_balcony')
     raw_id_fields = ('liked_by',)
-    # inlines = [PropertyInline]
-    # exclude = ['flat']
+    inlines = [PropertyInline]
+    exclude = ['flat']
 
 
 @admin.register(Complaint)
