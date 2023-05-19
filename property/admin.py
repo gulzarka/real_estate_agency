@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import Flat, Complaint, Owner
+from .models import Flat
+# , Complaint, Owner
 
 
 # class PropertyInline(admin.TabularInline):
@@ -29,21 +30,21 @@ class FlatAdmin(admin.ModelAdmin):
         'new_building',
         'rooms_number',
         'has_balcony')
-    raw_id_fields = ('liked_by',)
+    # raw_id_fields = ('liked_by',)
     # inlines = [PropertyInline]
     # exclude = ['flat']
 
 
-@admin.register(Complaint)
-class ComplaintAdmin(admin.ModelAdmin):
-    list_display = (
-        'user',
-        'flat',
-        'text')
-    raw_id_fields = ('user', 'flat')
+# @admin.register(Complaint)
+# class ComplaintAdmin(admin.ModelAdmin):
+#     list_display = (
+#         'user',
+#         'flat',
+#         'text')
+#     raw_id_fields = ('user', 'flat')
 
 
-@admin.register(Owner)
-class OwnerAdmin(admin.ModelAdmin):
-    raw_id_fields = ('flat',)
+# @admin.register(Owner)
+# class OwnerAdmin(admin.ModelAdmin):
+#     raw_id_fields = ('flat',)
 
